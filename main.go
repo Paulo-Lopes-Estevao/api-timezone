@@ -16,9 +16,16 @@ func getAllTimezone(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+
+	port := os.Getenv("PORT")
+
 	http.HandleFunc("/", getAllTimezone)
-	fmt.Println("running server")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	fmt.Println("Server started at port 8080")
+	err := http.ListenAndServe(":"+port, nil)
+
+	if err != nil {
+		log.Println("Not Running Server...", err.Error())
+	}
 }
 
 func loadData() []byte {
