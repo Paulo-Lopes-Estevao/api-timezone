@@ -18,7 +18,7 @@ func getAllTimezone(w http.ResponseWriter, r *http.Request) {
 func main() {
 	http.HandleFunc("/", getAllTimezone)
 	fmt.Println("running server")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(":7001", nil))
 }
 
 func loadData() []byte {
